@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import ListItem from './ListItem';
+import { Link } from '@reach/router';
+
+import { $inactiveGray } from 'styleVariables';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -21,12 +24,15 @@ const Pagination = styled.div`
   margin: 20px auto;
 `;
 
-const PageButton = styled.a`
+const PageButton = styled(Link)`
   font-size: 1.2rem;
   background: #fff;
-  border: 1px solid #000;
+  border: ${props => props.active ? '1px solid #000' : `1px solid ${$inactiveGray}`};
   width: 80px;
-  cursor: pointer;
+  cursor: ${props => props.active ? 'pointer' : 'default'};
+  color: ${props => props.active ? '#000' : $inactiveGray};
+  text-align: center;
+  text-decoration: none;
 `;
 
 export default ({
@@ -45,8 +51,12 @@ export default ({
       />
     )}
     <Pagination>
-      <PageButton>&lt; last</PageButton>
-      <PageButton>next &gt;</PageButton>
+      <PageButton 
+        active={previousPage !== '/'}
+        to={`/${previousPage}`}>&lt; last</PageButton>
+      <PageButton 
+        active={nextPage !== '/'}
+        to={`/${nextPage}`}>next &gt;</PageButton>
     </Pagination>     
   </Wrapper>
 );
