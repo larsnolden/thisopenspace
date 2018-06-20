@@ -22,6 +22,7 @@ const Pagination = styled.div`
   justify-content: space-between;
   width: 190px;
   margin: 20px auto;
+  height: 50px;
 `;
 
 const PageButton = styled(Link)`
@@ -33,6 +34,7 @@ const PageButton = styled(Link)`
   color: ${props => props.active ? '#000' : $inactiveGray};
   text-align: center;
   text-decoration: none;
+  height: 30px;
 `;
 
 export default ({
