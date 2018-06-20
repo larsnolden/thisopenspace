@@ -1,0 +1,1 @@
+export const $textgray = '#4c4c4c';

@@ -6,6 +6,10 @@ const Image = styled.img`
   max-width: 100%;
 `;
 
+const Details = styled.div`
+  padding: 16px;
+`;
+
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,7 +31,7 @@ const Title = styled.div`
 const Detail = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100px;
+  width: 120px;
   justify-content: space-between;
 `;
 
@@ -47,34 +51,36 @@ export default ({
 }) => (
   <Card>
     <Image src={imageUrl} />
-    <Title>{name}</Title>
-    at {address}
-    <FlexRow>
-      <FlexColumn>  
-        <Detail>  
-          <Label>SQFT: </Label> 
-          {square_footage}
-        </Detail>      
-        <Detail>
-          <Label>Capacity: </Label>
-          {capacity}
-        </Detail>      
-        <Detail>   
-          <Label>Views: </Label>
-           {views_count}
-        </Detail>      
-      </FlexColumn>
-      <FlexColumn>  
-          <Label>Price </Label>      
+    <Details>
+      <Title>{name}</Title>
+      at {address}
+      <FlexRow>
+        <FlexColumn>  
+          <Detail>  
+            <Label>SQFT: </Label> 
+            {square_footage}
+          </Detail>      
           <Detail>
-            <Label>Hourly: </Label> 
-            {hourly_price}
-          </Detail>
-          <Detail>
-            <Label>Daily: </Label> 
-            {daily_price}
-          </Detail>
-      </FlexColumn>
-    </FlexRow>
+            <Label>Capacity: </Label>
+            {capacity}
+          </Detail>      
+          <Detail>   
+            <Label>Views: </Label>
+            {views_count}
+          </Detail>      
+        </FlexColumn>
+        <FlexColumn>  
+            <Label>Price </Label>      
+            <Detail>
+              <Label>Hourly: </Label> 
+              {hourly_price ? `${hourly_price} $` : 'NA'}
+            </Detail>
+            <Detail>
+              <Label>Daily: </Label> 
+              {daily_price ? `${daily_price} $` : 'NA'}
+            </Detail>
+        </FlexColumn>
+      </FlexRow>
+    </Details>    
   </Card>
 );
