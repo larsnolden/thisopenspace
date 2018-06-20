@@ -15,8 +15,11 @@ export default class List extends React.Component {
     const { page } = this.props;
     axios.get(`https://thisopenspace.com/lhl-test?page=${page ? page : 0}`)
     .then(res => {
+      //  set spaces and remove country from address
       this.setState({
-        spaces: res.data.data,
+        spaces: res.data.data
+        .map(space => 
+          ({...space, address: space.address.split(',')[0]})),
       })
     })
     .catch((err) => alert(`Error ${err}`));
