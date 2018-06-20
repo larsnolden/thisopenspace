@@ -7,5 +7,6 @@ import { Router } from '@reach/router';
 ReactDOM.render(
   <Router>
     <List path=":page" />
-  </Router>    
+    <List default />
+  </Router>
 , document.getElementById('root'));

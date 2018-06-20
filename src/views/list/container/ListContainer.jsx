@@ -13,14 +13,14 @@ export default class List extends React.Component {
     this.fetchSpaces = this.fetchSpaces.bind(this);
   }
 
-  fetchSpaces() {
-    const { page } = this.props;    
-    axios.get(`https://thisopenspace.com/lhl-test?page=${page ? page : 0}`)
+  fetchSpaces(page = 1) {
+    console.log('fetching page', page);
+    axios.get(`https://thisopenspace.com/lhl-test?page=${page}`)
       .then(res => {
         //  standard pageSize is 10, if smaller then there are no listings left
         let nextPage = res.data.page_size < 10 ? '/' : +page + 1;
   
-        let previousPage = page > 1 ?  +page - 1 : '/';
+        let previousPage = page > 1 ? +page - 1 : '/';
   
         //  set spaces and remove country from address
         this.setState({
@@ -37,12 +37,16 @@ export default class List extends React.Component {
 
   componentDidMount() {
     // initial fetch
-    this.fetchSpaces();
+    this.fetchSpaces(this.props.page);
   }
 
   componentDidUpdate() {
+    const { page } = this.props;
     // page requested changed, fetch new data
-    if(this.props.page !== this.state.page) this.fetchSpaces();
+    // page is undefined on route "/"
+    if(page && page !== this.state.page) {
+      this.fetchSpaces(page);
+    }
   }
 
   render() {
