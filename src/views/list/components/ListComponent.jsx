@@ -13,8 +13,26 @@ const Title = styled.div`
   text-align: center;
 `;
 
+const Pagination = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 190px;
+  margin: 20px auto;
+`;
+
+const PageButton = styled.a`
+  font-size: 1.2rem;
+  background: #fff;
+  border: 1px solid #000;
+  width: 80px;
+  cursor: pointer;
+`;
+
 export default ({
-  spaces
+  spaces,
+  nextPage,
+  previousPage,
 }) => (
   <Wrapper>
     <Title>OPEN SPACES</Title>
@@ -26,5 +44,9 @@ export default ({
         {...space} 
       />
     )}
+    <Pagination>
+      <PageButton>&lt; last</PageButton>
+      <PageButton>next &gt;</PageButton>
+    </Pagination>     
   </Wrapper>
 );
