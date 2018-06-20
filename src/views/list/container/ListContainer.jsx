@@ -30,7 +30,8 @@ export default class List extends React.Component {
           spaces: res.data.data.map(space => 
             ({...space, address: space.address.split(',')[0]})),
         });
-  
+        // scroll to top
+        window.scrollTo(0, 0);
       })
       .catch((err) => alert(`Error ${err}`));
   }
