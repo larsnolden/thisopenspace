@@ -43,7 +43,8 @@ export default class List extends React.Component {
 
   componentDidUpdate() {
     const { page } = this.props;
-    // page requested changed, fetch new data
+    
+    // page requested change, fetch new data
     // page is undefined on route "/"
     if(page && page !== this.state.page) {
       this.fetchSpaces(page);
@@ -56,6 +57,7 @@ export default class List extends React.Component {
         spaces={this.state.spaces} 
         nextPage={this.state.nextPage}
         previousPage={this.state.previousPage}
+        currentPage={this.state.page}
       />
     )
     return () => <div>Loading</div>

@@ -63,14 +63,14 @@ export default ({
           <Detail>
             <Label>Capacity: </Label>
             {capacity}
-          </Detail>      
-          <Detail>   
+          </Detail>
+          <Detail>
             <Label>Views: </Label>
             {views_count}
-          </Detail>      
+          </Detail>
         </FlexColumn>
-        <FlexColumn>  
-            <Label>Price </Label>      
+        <FlexColumn>
+            <Label>Price </Label>
             <Detail>
               <Label>Hourly: </Label> 
               {hourly_price ? `${hourly_price} $` : 'NA'}
@@ -81,6 +81,6 @@ export default ({
             </Detail>
         </FlexColumn>
       </FlexRow>
-    </Details>    
+    </Details>
   </Card>
 );

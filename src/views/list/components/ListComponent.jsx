@@ -20,13 +20,14 @@ const Pagination = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 190px;
-  margin: 20px auto;
-  height: 50px;
+  width: 250px;
+  margin: 20px auto 0 auto;
+  height: 70px;
+  font-size: 1.2rem;  
 `;
 
 const PageButton = styled(Link)`
-  font-size: 1.2rem;
+  font-size: inherit;
   background: #fff;
   border: ${props => props.active ? '1px solid #000' : `1px solid ${$inactiveGray}`};
   width: 80px;
@@ -41,6 +42,7 @@ export default ({
   spaces,
   nextPage,
   previousPage,
+  currentPage,
 }) => (
   <Wrapper>
     <Title>OPEN SPACES</Title>
@@ -55,10 +57,13 @@ export default ({
     <Pagination>
       <PageButton 
         active={previousPage !== '/'}
-        to={`/${previousPage}`}>&lt; last</PageButton>
+        to={`/${previousPage}`}>&lt; last
+      </PageButton>
+      <div>{currentPage}</div>
       <PageButton 
         active={nextPage !== '/'}
-        to={`/${nextPage}`}>next &gt;</PageButton>
-    </Pagination>     
+        to={`/${nextPage}`}>next &gt;
+      </PageButton>
+    </Pagination>
   </Wrapper>
 );
